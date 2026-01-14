@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-step3
+  labels:
+    name: project-step3
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: project-step3
+  template:
+    metadata:
+      name: project-step3
+      labels:
+        name: project-step3
+        version: v1
+    spec:
+      containers:
+        - name: project-step3
+          image: project-step3:v1
