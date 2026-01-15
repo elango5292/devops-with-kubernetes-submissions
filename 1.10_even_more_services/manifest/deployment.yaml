@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: even-more-services
+  labels:
+    app: even-more-services
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+       app: even-more-services
+  template:
+    metadata:
+      name: even-more-services
+      labels:
+        app: even-more-services
+        version: v1
+    spec:
+      volumes:
+        - name: hash-volume
+          emptyDir: {}
+      containers:
+        - name: src-1-generate-hash
+          image: src-1-generate-hash:v1
+          volumeMounts:
+            - name: hash-volume
+              mountPath: /usr/src/app
+          env:
+            - name: SHARED_HASH_PATH
+              value: "/usr/src/app/hash.txt"
+        - name: src-2-respond-hash
+          image: src-2-respond-hash:v1
+          volumeMounts:
+            - name: hash-volume
+              mountPath: /usr/src/app
+          env:
+            - name: SHARED_HASH_PATH
+              value: "/usr/src/app/hash.txt"

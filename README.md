@@ -13,3 +13,4 @@
 | 1.7 | External Access with Ingress | [1.7_external_access_ingress](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.7/1.7_external_access_ingress) |
 | 1.8 | The Project Step 5 | [1.8_the_project_step5](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.8/1.8_the_project_step5) |
 | 1.9 | More Services | [1.9_more_services](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.9/1.9_more_services) |
+| 1.10 | Even More Services | [1.10_even_more_services](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.10/1.10_even_more_services) |
