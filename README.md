@@ -10,3 +10,4 @@
 | 1.4 | The Project Step 2 | [1.4_the_project_step2](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.4/1.4_the_project_step2) |
 | 1.5 | The Project Step 3 | [1.5_the_project_step3](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.5/1.5_the_project_step3) |
 | 1.6 | The Project Step 4 | [1.6_the_project_step4](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.6/1.6_the_project_step4) |
+| 1.7 | External Access with Ingress | [1.7_external_access_ingress](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.7/1.7_external_access_ingress) |

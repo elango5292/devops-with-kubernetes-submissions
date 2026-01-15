@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: hash-external-ingress
+  labels:
+    app: hash-external-ingress
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hash-external-ingress
+  template:
+    metadata:
+      name: hash-external-ingress
+      labels:
+        app: hash-external-ingress
+    spec:
+      containers:
+        - name: hash-external-ingress
+          image: hash-external-ingress:v1
