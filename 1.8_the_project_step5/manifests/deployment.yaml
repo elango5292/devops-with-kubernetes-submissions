@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-step5
+  labels:
+    name: project-step5
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: project-step5
+  template:
+    metadata:
+      name: project-step5
+      labels:
+        name: project-step5
+        version: v1
+    spec:
+      containers:
+        - name: project-step5
+          image: project-step5:v2
