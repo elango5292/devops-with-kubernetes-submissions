@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: service-1-log-hash
+  labels:
+    app: service-1-log-hash
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-1-log-hash
+  template:
+    metadata:
+      name: service-1-log-hash
+      labels:
+        app: service-1-log-hash
+        version: v1
+    spec:
+      containers:
+        - name: service-1-log-hash
+          image: service-1-log-hash:v1
+
+---
+
+apiVersion: apps/v1
+kind: Deployment 
+metadata:
+  name: service-2-ping-pong
+  labels:
+    app: service-2-ping-pong
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-2-ping-pong
+  template:
+    metadata:
+      name: service-2-ping-pong
+      labels:
+        app: service-2-ping-pong
+        version: v1
+    spec:
+      containers:
+        - name: service-2-ping-pong
+          image: service-2-ping-pong:v1

@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service 
+metadata:
+  name: service-1-log-hash
+  labels:
+    app: service-1-log-hash
+spec:
+  type: ClusterIP
+  selector:
+    app: service-1-log-hash
+  ports:
+    - name: logh
+      port: 1234
+      targetPort: 8000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-2-ping-pong
+  labels:
+    app: service-2-ping-pong
+spec:
+  type: ClusterIP
+  selector:
+    app: service-2-ping-pong
+  ports:
+    - name: ponger
+      port: 1234
+      targetPort: 8000
