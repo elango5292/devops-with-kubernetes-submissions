@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-step7
+  labels:
+    name: project-step7
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: project-step7
+  template:
+    metadata:
+      name: project-step7
+      labels:
+        name: project-step7
+        version: v1
+    spec:
+      volumes:
+        - name: project-step7-volume
+          persistentVolumeClaim:
+            claimName: project-step7-pvc
+      containers:
+        - name: project-step7
+          image: project-step7:v1
+          volumeMounts:
+            - name: project-step7-volume
+              mountPath: /usr/src/mount
+          env:
+            - name: IMAGE_STORE_PATH
+              value: "/usr/src/mount/image-store"
