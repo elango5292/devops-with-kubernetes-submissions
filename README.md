@@ -15,3 +15,4 @@
 | 1.9 | More Services | [1.9_more_services](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.9/1.9_more_services) |
 | 1.10 | Even More Services | [1.10_even_more_services](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.10/1.10_even_more_services) |
 | 1.11 | Persisting Data | [1.11_persisting_data](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.11/1.11_persisting_data) |
+| 1.12 | The Project Step 6 | [1.12_the_project_step6](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.12/1.12_the_project_step6) |
