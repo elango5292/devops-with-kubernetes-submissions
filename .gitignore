@@ -27,6 +27,6 @@ env/
 # OS
 .DS_Store
 Thumbs.db
-
+utils
 # Logs
 *.log

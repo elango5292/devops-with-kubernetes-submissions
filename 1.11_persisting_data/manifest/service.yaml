@@ -1,0 +1,33 @@
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: src-1-log-output
+  labels:
+    app: src-1-log-output
+    version: 1.0.0
+spec:
+  type: ClusterIP
+  selector:
+    app: src-1-log-output
+  ports:
+    - name: main
+      port: 1234
+      targetPort: 8000
+
+--- 
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: src-2-pingpong
+  labels:
+    app: src-2-pingpong
+    version: 1.0.0
+spec:
+  type: ClusterIP
+  selector:
+    app: src-2-pingpong
+  ports:
+    - name: main
+      port: 1234
+      targetPort: 8000
