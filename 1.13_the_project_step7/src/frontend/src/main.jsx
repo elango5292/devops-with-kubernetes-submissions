@@ -10,25 +10,54 @@ const Home = () => {
   const [isImageLoading, setIsImageLoading ] = useState(true)
   
   return (
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', flex: 1, textAlign: 'center', padding: '40px' }}>
-    <h1 style={{ fontSize: '3rem', marginBottom: '20px' }}>To-do</h1>
-    {isImageLoading && <div className="loader"></div>}
-    <img 
-      src="/api/image" 
-      alt="Daily Feature"
-      onLoad={() => setIsImageLoading(false)}
-      style={{ 
-        margin: '20px', 
-        maxWidth: '300px', // Reduced size as requested
-        maxHeight: '300px',
-        borderRadius: '8px',
-        display: isImageLoading ? 'none' : 'block'
-      }} 
-    />
+  <div style={{ padding: '40px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+    <h1 style={{ fontSize: '3rem', marginBottom: '40px', textAlign: 'center' }}>To-do</h1>
     
-    <TodoInput />
-    <TodoList />
+    <div style={{ 
+      display: 'flex', 
+      flexWrap: 'wrap', 
+      gap: '40px', 
+      alignItems: 'stretch', // ensures both columns have same height if possible, or use min-height
+      justifyContent: 'center',
+      minHeight: '60vh' // Ensure enough height for vertical centering
+    }}>
+      {/* Left Column: Image (Approx 45%) */}
+      <div style={{ flex: '1 1 45%', minWidth: '300px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        {isImageLoading && <div className="loader"></div>}
+        <img 
+          src="/api/image" 
+          alt="Daily Feature"
+          onLoad={() => setIsImageLoading(false)}
+          style={{ 
+            width: '100%',
+            height: 'auto',
+            maxHeight: '70vh', // Prevent it from becoming excessively tall
+            objectFit: 'cover', // or 'contain' depending on preference
+            borderRadius: '12px',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)',
+            display: isImageLoading ? 'none' : 'block'
+          }} 
+        />
+      </div>
 
+      {/* Right Column: Todo App */}
+      <div className="custom-scroll" style={{ 
+        flex: '1 1 45%', 
+        minWidth: '300px', 
+        display: 'flex', 
+        flexDirection: 'column', 
+        alignItems: 'center',
+        justifyContent: 'center', // Vertically center content
+        maxHeight: '70vh', // Match image max height constraint
+        overflowY: 'auto', // Scroll if content is too long
+        padding: '20px'
+      }}>
+        <div style={{ width: '100%', maxWidth: '400px' }}> {/* Wrapper to keep input/list aligned */}
+          <TodoInput />
+          <TodoList />
+        </div>
+      </div>
+    </div>
   </div> )
 }
 

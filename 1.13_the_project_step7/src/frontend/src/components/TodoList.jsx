@@ -4,6 +4,14 @@ const TodoList = () => {
     "Learn Kubernetes",
     "Deploy first pod",
     "Configure Ingress",
+    "Persist data with Volumes",
+    "Learn Kubernetes",
+    "Deploy first pod",
+    "Configure Ingress",
+    "Persist data with Volumes",
+    "Learn Kubernetes",
+    "Deploy first pod",
+    "Configure Ingress",
     "Persist data with Volumes"
   ]
 
