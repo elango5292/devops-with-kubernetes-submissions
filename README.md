@@ -19,3 +19,4 @@
 | 1.13 | The Project Step 7 | [1.13_the_project_step7](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/1.13/1.13_the_project_step7) |
 | 2.1 | Connecting Pods | [2.1_connecting_pods](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.1/2.1_connecting_pods) |
 | 2.2 | The Project Step 8 | [2.2_the_project_step8](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.2/2.2_the_project_step8) |
+| 2.3 | Keep them separated | [2.3_keep_them_separated](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.3/2.3_keep_them_separated) |
