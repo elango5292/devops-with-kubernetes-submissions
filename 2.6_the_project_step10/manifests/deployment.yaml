@@ -29,7 +29,23 @@ spec:
             - name: project-step10-volume
               mountPath: /usr/src/mount
           env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: PROJECT_PORT
             - name: IMAGE_STORE_PATH
-              value: "/usr/src/mount/image-store"
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: IMAGE_STORE_PATH
             - name: TODO_BACKEND_URL
-              value: "http://todo-backend-svc:2345"
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: TODO_BACKEND_URL
+            - name: DAILY_IMAGE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: DAILY_IMAGE_URL

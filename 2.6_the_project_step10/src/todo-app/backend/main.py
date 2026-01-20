@@ -13,9 +13,10 @@ manager = AssetManager(storage_path)
 TODO_BACKEND_URL = os.getenv("TODO_BACKEND_URL", "http://localhost:8001")
 
 # Register the daily image asset
+daily_image_url = os.getenv("DAILY_IMAGE_URL", "https://picsum.photos/1200")
 manager.register_asset(
     name="daily_image",
-    url="https://picsum.photos/1200",
+    url=daily_image_url,
     refresh_interval_seconds=600, # 10 minutes
     filename="daily_image.jpg"
 )

@@ -18,6 +18,12 @@ spec:
       containers:
         - name: todo-backend
           image: todo-backend:v1
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: TODO_PORT
           ports:
             - containerPort: 8001
           resources:

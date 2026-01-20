@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: project-config
+  namespace: project
+data:
+  PROJECT_PORT: "80"
+  TODO_PORT: "8001"
+  TODO_BACKEND_URL: "http://todo-backend-svc:2345"
+  IMAGE_STORE_PATH: "/usr/src/mount/image-store"
+  DAILY_IMAGE_URL: "https://picsum.photos/1200"

@@ -2,11 +2,11 @@ FROM oven/bun:1 AS frontend-base
 
 WORKDIR /app
 
-COPY src/frontend/package.json .
+COPY frontend/package.json .
 
 RUN bun install
 
-COPY src/frontend/ .
+COPY frontend/ .
 
 RUN bun run build
 
@@ -14,14 +14,16 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-COPY src/backend/requirements.txt .
+COPY backend/requirements.txt .
 
 RUN pip install -r requirements.txt
 
 COPY --from=frontend-base /app/dist ./dist
 
-COPY src/backend/ .
+COPY backend/ .
 
-EXPOSE 80
+ENV PORT=80
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]
+EXPOSE $PORT
+
+CMD uvicorn main:app --host 0.0.0.0 --port $PORT

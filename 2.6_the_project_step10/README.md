@@ -1,6 +1,11 @@
-## 2.4 The Project - Step 9
+## 2.6 The Project - Step 10
 
-Moved all project resources (Main App, Todo Backend, PVC, Ingress) to a dedicated namespace called `project`.
+Refactored the application structure and moved all hardcoded configurations (ports, URLs, paths) to Kubernetes ConfigMaps and Environment Variables.
+
+### Changes
+1.  **Folder Structure**: Source code organized into `src/todo-app` (Frontend/Backend) and `src/todo-backend`.
+2.  **Configuration**: Introduced `configmap.yaml` to centralize configuration.
+3.  **Environment Variables**: Updated helper scripts and manifests to use `valueFrom` ConfigMap.
 
 ### Usage
 
@@ -14,15 +19,23 @@ kubectl create namespace project
 
 ```bash
 # Main App
-docker build -t project-step10:v1 ./2.4_the_project_step9/
+# Run from repository root
+docker build -t project-step10:v1 2.6_the_project_step10/src/todo-app/
+
 
 # Todo Backend
-docker build -t todo-backend:v1 ./2.4_the_project_step9/src/todo-backend/
+docker build -t todo-backend:v1 2.6_the_project_step10/src/todo-backend/
+```
 
-# Ensure NGINX Ingress Controller is installed
+**3. Ensure NGINX Ingress Controller is installed**
+
+```bash
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
+```
 
-# Deploy manifests
-kubectl apply -f ./2.4_the_project_step9/admin_manifest/
-kubectl apply -f ./2.4_the_project_step9/manifests/
+**4. Deploy**
+
+```bash
+kubectl apply -f ./2.6_the_project_step10/admin_manifest/
+kubectl apply -f ./2.6_the_project_step10/manifests/
 ```
