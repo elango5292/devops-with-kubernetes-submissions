@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-step10
+  namespace: project
+  labels:
+    name: project-step10
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: project-step10
+  template:
+    metadata:
+      name: project-step10
+      labels:
+        name: project-step10
+        version: v1
+    spec:
+      volumes:
+        - name: project-step10-volume
+          persistentVolumeClaim:
+            claimName: project-step10-pvc
+      containers:
+        - name: project-step10
+          image: project-step10:v1
+          volumeMounts:
+            - name: project-step10-volume
+              mountPath: /usr/src/mount
+          env:
+            - name: IMAGE_STORE_PATH
+              value: "/usr/src/mount/image-store"
+            - name: TODO_BACKEND_URL
+              value: "http://todo-backend-svc:2345"
