@@ -24,4 +24,5 @@
 | 2.5 | Documentation and ConfigMaps | [2.5_documentation_and_configMaps](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.5/2.5_documentation_and_configMaps) |
 | 2.6 | The Project Step 10 | [2.6_the_project_step10](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.6/2.6_the_project_step10) |
 | 2.7 | Stateful applications | [2.7_stateful_applications](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.7/2.7_stateful_applications) |
+| 2.8 | The Project Step 11 | [2.8_the_project_step11](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.8/2.8_the_project_step11) |
 
