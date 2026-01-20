@@ -11,20 +11,21 @@ This exercise demonstrates:
 kubectl create namespace exercises
 ```
 
-**2. Build Images**
+**2. Build Images and Deploy**
 
 ```bash
+# Build images
 docker build -t src-1-log-output:v1 ./2.5_documentation_and_configMaps/src_1_log_output/
 docker build -t src-2-pingpong:v1 ./2.5_documentation_and_configMaps/src_2_pingpong/
-```
 
-**3. Deploy**
+# Ensure NGINX Ingress Controller is installed
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
 
-```bash
+# Deploy
 kubectl apply -f ./2.5_documentation_and_configMaps/manifest/
 ```
 
-**4. Verification**
+**3. Verification**
 
 Checking logs:
 ```bash
