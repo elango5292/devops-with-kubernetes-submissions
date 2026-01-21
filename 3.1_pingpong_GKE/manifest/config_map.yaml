@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: log-output-config
+  namespace: exercises
+data:
+  MESSAGE: "hello world"
+  message.env: |-
+    this text is from file
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-db-config
+  namespace: exercises
+data:
+  DB_SERVICE_NAME: "postgres-db"
+  DB_PORT: "5432"
+  DB_USER: "admin"
+  DB_PASSWORD: "postgres"
+  DB_NAME: "mdb"
+
+---
