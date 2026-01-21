@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-step13
+  namespace: project
+  labels:
+    name: project-step13
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: project-step13
+  template:
+    metadata:
+      name: project-step13
+      labels:
+        name: project-step13
+        version: v1
+    spec:
+      containers:
+        - name: project-step13
+          image: project-step13:v1
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: PROJECT_PORT
+            - name: TODO_BACKEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: TODO_BACKEND_URL
+            - name: DAILY_IMAGE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: DAILY_IMAGE_URL
