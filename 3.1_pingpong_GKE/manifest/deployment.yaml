@@ -27,7 +27,7 @@ spec:
                 path: message.env
       containers:
         - name: src-1-log-output
-          image: elango5292/src-1-log-output:v1
+          image: elango5292/src-1-log-output:v2
           env:
             - name: PINGPONG_SERVICE_NAME
               value: "src-2-pingpong"
@@ -67,7 +67,7 @@ spec:
     spec:
       containers:
         - name: src-2-pingpong
-          image: elango5292/src-2-pingpong:v1
+          image: elango5292/src-2-pingpong:v2
           envFrom:
             - configMapRef:
                 name: postgres-db-config

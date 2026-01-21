@@ -20,8 +20,8 @@ The application uses the following pre-built images hosted on Docker Hub:
 
 | Component | Image Tag |
 | :--- | :--- |
-| **Log Output (Main App)** | `elango5292/src-1-log-output:v1` |
-| **Ping-pong (Counter)** | `elango5292/src-2-pingpong:v1` |
+| **Log Output (Main App)** | `elango5292/src-1-log-output:v2` |
+| **Ping-pong (Counter)** | `elango5292/src-2-pingpong:v2` |
 
 ```bash
 kubectl apply -f ./3.1_pingpong_GKE/manifest/
@@ -51,4 +51,33 @@ kubectl get svc -n exercises postgres-db-external
 | `postgres-db-external` | LoadBalancer | **Testing Only** | `kubectl get svc -n exercises postgres-db-external` |
 
 **Database Note:** The application uses `psycopg[binary]` and `sqlalchemy` for PostgreSQL connections.
+
+---
+
+### 7. Evidence
+
+**1. Cluster Status (Terminal)**
+*Showing StatefulSet, Pods, and Services with External IPs.*
+![Terminal Output](./screenshots/terminal-get-sts-po-svc.png)
+<br/>
+
+**2. GKE Workloads (Console)**
+*Verification of Pods running in Google Cloud Console.*
+![GKE Workloads](./screenshots/gconsole-workload-list-of-pods.png)
+<br/>
+
+**3. ConfigMaps (Console)**
+*Verification of Configuration Maps.*
+![GKE ConfigMaps](./screenshots/gconsole-list-configmaps.png)
+<br/>
+
+**4. Application Access (LoadBalancer)**
+*Log Output Service (Main App):*
+![Log Output Access](./screenshots/browser-access-logoutput-external-ip.png)
+<br/>
+
+*Ping-pong Service (Counter):*
+![PingPong Access](./screenshots/browser-access-pingpong-external-ip.png)
+<br/>
+
 
