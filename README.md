@@ -27,3 +27,4 @@
 | 2.8 | The Project Step 11 | [2.8_the_project_step11](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.8/2.8_the_project_step11) |
 | 2.9 | The Project Step 12 | [2.9_the_project_step12](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.9/2.9_the_project_step12) |
 | 2.10 | The Project Step 13 - Logging & Monitoring | [2.10_the_project_step13](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/2.10/2.10_the_project_step13) |
+| 3.1 | Pingpong GKE | [3.1_pingpong_GKE](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.1/3.1_pingpong_GKE) |
