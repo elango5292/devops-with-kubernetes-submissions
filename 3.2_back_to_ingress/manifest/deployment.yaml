@@ -27,12 +27,12 @@ spec:
                 path: message.env
       containers:
         - name: src-1-log-output
-          image: src-1-log-output:v1
+          image: elango5292/src-1-log-output:v2
           env:
             - name: PINGPONG_SERVICE_NAME
               value: "src-2-pingpong"
             - name: PINGPONG_SERVICE_PORT
-              value: "1234"
+              value: "80"
             - name: PYTHONUNBUFFERED
               value: "1"
             - name: MESSAGE
@@ -67,7 +67,7 @@ spec:
     spec:
       containers:
         - name: src-2-pingpong
-          image: src-2-pingpong:v1
+          image: elango5292/src-2-pingpong:v3
           envFrom:
             - configMapRef:
                 name: postgres-db-config

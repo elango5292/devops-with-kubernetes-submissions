@@ -15,6 +15,11 @@ def startup_event():
     print(f"Server started in port {port}")
 
 
+@app.get("/")
+def read_root():
+    return {}
+
+
 @app.get("/pings", response_class=PlainTextResponse)
 def ping():
     count = get_pingpong("count").value

@@ -21,10 +21,10 @@ The application uses the following pre-built images hosted on Docker Hub:
 | Component | Image Tag |
 | :--- | :--- |
 | **Log Output (Main App)** | `elango5292/src-1-log-output:v2` |
-| **Ping-pong (Counter)** | `elango5292/src-2-pingpong:v2` |
+| **Ping-pong (Counter)** | `elango5292/src-2-pingpong:v3` |
 
 ```bash
-kubectl apply -f ./3.1_pingpong_GKE/manifest/
+kubectl apply -f ./3.2_back_to_ingress/manifest/
 ```
 
 **4. Verify**
@@ -38,7 +38,7 @@ kubectl get svc -n exercises
 To expose the Postgres database externally for testing purposes:
 
 ```bash
-kubectl apply -f ./3.1_pingpong_GKE/manifests_for_testing/db_external.yaml
+kubectl apply -f ./3.2_back_to_ingress/manifests_for_testing
 kubectl get svc -n exercises postgres-db-external
 ```
 
