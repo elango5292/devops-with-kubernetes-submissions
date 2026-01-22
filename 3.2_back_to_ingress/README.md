@@ -1,4 +1,4 @@
-## 3.1 Pingpong GKE
+## 3.2 Back to Ingress
 
 Run "Log output" and "Ping-pong" applications into GKE and expose it with Ingress.
 
@@ -22,6 +22,8 @@ The application uses the following pre-built images hosted on Docker Hub:
 | :--- | :--- |
 | **Log Output (Main App)** | `elango5292/src-1-log-output:v2` |
 | **Ping-pong (Counter)** | `elango5292/src-2-pingpong:v3` |
+
+**Note:** To satisfy the Ingress requirement of a successful response from the `/` path, a new route has been added to the `main.py` of the "Ping-pong" application.
 
 ```bash
 kubectl apply -f ./3.2_back_to_ingress/manifest/
@@ -57,8 +59,32 @@ kubectl get svc -n exercises postgres-db-external
 ### 7. Evidence
 
 **1. Cluster Status (Terminal)**
-*Showing StatefulSet, Pods, and Services with External IPs.*
-![Terminal Output](--)
+*Applying manifests*
+![Terminal Output](./screenshots/cloud_terminal_apply_manifests.png)
+<br/>
+
+**2. GKE Workloads (Console)**
+*Verification of Pods running in Google Cloud Console.*
+![GKE Workloads](./screenshots/gconsole_workload_pods_tab.png)
+<br/>
+
+**3. GKE Services (Console)**
+*Verification of Services.*
+![GKE Services](./screenshots/gconsole_services_tab.png)
+<br/>
+
+**4. GKE Ingress (Console)**
+*Ingress details.*
+![GKE Ingress](./screenshots/gconsole_ingress_view.png)
+<br/>
+
+**5. Application Access (Ingress)**
+*Ping-pong Service (Counter):*
+![PingPong Access](./screenshots/browser_ping_pong_access.png)
+<br/>
+
+*Log Output Service (Main App):*
+![Log Output Access](./screenshots/browser_logout_access.png)
 <br/>
 
 
