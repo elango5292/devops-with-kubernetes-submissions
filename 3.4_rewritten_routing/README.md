@@ -34,3 +34,21 @@ Ensure the Gateway and Routes are correctly established:
 kubectl get httproute -n exercises
 ```
 *Verify that the `URLRewrite` filter is applied.*
+
+### Evidence
+
+**1. Deployment & Verification (Terminal)**
+*Applying manifests and checking HTTP Routes:*
+![Apply and Verify](./screenshots/gcloud-shell-kubectl-apply-manifests.png)
+![Get HTTPRoute](./screenshots/gcloud-shell-kubectl-get-httproute.png)
+
+**2. Gateway Rule Configuration (Console)**
+*Verification of the URL Rewrite rule for `/pingpong` -> `/`*
+![Rewrite Rule](./screenshots/gconsole-rule-1-pingpong-with-replaceurl.png)
+
+**3. Application Verification**
+*Accessing `/pingpong` (Shows count):*
+![PingPong Access](./screenshots/browser-shows-pingpong.png)
+
+*Accessing `/pingpong/version` (Shows v5):*
+![PingPong Version](./screenshots/browser-shows-pingpong-version.png)
