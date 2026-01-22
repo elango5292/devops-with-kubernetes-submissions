@@ -30,3 +30,4 @@
 | 3.1 | Pingpong GKE | [3.1_pingpong_GKE](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.1/3.1_pingpong_GKE) |
 | 3.2 | Back to Ingress | [3.2_back_to_ingress](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.2/3.2_back_to_ingress) |
 | 3.3 | To the Gateway | [3.3_to_the_gateway](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.3/3.3_to_the_gateway) |
+| 3.4 | Rewritten Routing | [3.4_rewritten_routing](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.4/3.4_rewritten_routing) |

@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: src-1-log-output
+  namespace: exercises
+  labels:
+    app: src-1-log-output
+    version: 1.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: src-1-log-output
+  template:
+    metadata:
+      name: src-1-log-output
+      labels:
+        app: src-1-log-output
+        version: 1.0.0
+    spec:
+      volumes:
+        - name: log-output-config
+          configMap:
+            name: log-output-config
+            items:
+              - key: message.env
+                path: message.env
+      containers:
+        - name: src-1-log-output
+          image: elango5292/src-1-log-output:v2
+          env:
+            - name: PINGPONG_SERVICE_NAME
+              value: "src-2-pingpong"
+            - name: PINGPONG_SERVICE_PORT
+              value: "80"
+            - name: PYTHONUNBUFFERED
+              value: "1"
+            - name: MESSAGE
+              valueFrom:
+                configMapKeyRef:
+                  name: log-output-config
+                  key: MESSAGE
+          volumeMounts:
+            - name: log-output-config
+              mountPath: /etc/config
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: src-2-pingpong
+  namespace: exercises
+  labels:
+    app: src-2-pingpong
+    version: 1.0.0
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: src-2-pingpong
+  template:
+    metadata:
+      name: src-2-pingpong
+      labels:
+        app: src-2-pingpong
+        version: 1.0.0
+    spec:
+      containers:
+        - name: src-2-pingpong
+          image: elango5292/src-2-pingpong:v5
+          envFrom:
+            - configMapRef:
+                name: postgres-db-config
