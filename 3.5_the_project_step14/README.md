@@ -44,3 +44,16 @@ It also performs image tag replacements for:
 - `todo-app-image`     -> `elango5292/todo-project-app:v1`
 - `todo-cron-image`    -> `elango5292/todo-project-cron:v1`
 
+### Evidence
+
+**1. Deployment with Kustomize**
+*Applying manifests using `kubectl apply -k`:*
+![Applying Kustomize](./screenshots/gshell-apply-k.png)
+
+**2. Resource Verification (Terminal)**
+*Listing all resources in the `project` namespace:*
+![Resource List](./screenshots/gshell-show-resources-all.png)
+
+**3. GKE Workloads (Console)**
+*Verification of Workloads running in Google Cloud Console:*
+![GKE Workloads](./screenshots/gke-workload-screen.png)

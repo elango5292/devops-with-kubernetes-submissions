@@ -1,14 +1,14 @@
-FROM oven/bun:1 AS frontend-base
+FROM node:20 AS frontend-base
 
 WORKDIR /app
 
 COPY frontend/package.json .
 
-RUN bun install
+RUN npm install
 
 COPY frontend/ .
 
-RUN bun run build
+RUN npm run build
 
 FROM python:3.12-slim
 
