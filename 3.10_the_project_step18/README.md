@@ -1,19 +1,20 @@
-# Exercise 3.8: The Project Step 17 - Automatic Cleanup
+# Exercise 3.10: The Project Step 18 - Backup CronJob
 
-## Goal
-Automatically delete the Kubernetes Environment when a branch is deleted.
+This directory contains the solution for Exercise 3.10.
 
-## Changes
-- **Directory**: `3.8_the_project_step17`
-- **Project Path**: `3.8_the_project_step17/manifests` (configured via `PROJECT_PATH` in workflow)
+## Overview
+A functional CronJob has been implemented in Kubernetes to backup the PostgreSQL database to a Google Cloud Storage bucket every 24 hours.
 
-## 1. Automatic Cleanup
+## Deployment Strategy
+- **Secret Management**: The Google Cloud service account key is securely injected during the deployment pipeline (GitHub Actions) into a Kubernetes Secret.
+- **CronJob**: Runs a `gcloud` container that dumps the database using `pg_dump` and uploads it to GCS using `gsutil`.
 
-Workflow **Delete Project NS** triggers on branch deletion:
-- **Action**: Deletes the namespace matching the branch name.
-- **Trigger**: `git push origin --delete <branch>`
+## Verification Evidence
 
-## 2. Usage
+### 1. CronJob in Google Cloud Console
+The CronJob is successfully deployed and visible in the GKE workloads.
+![CronJob View](screenshots/gcloud_db_backup_cron_view.png)
 
-1.  **Create**: `git push origin feature-branch` -> Deploys to `feature-branch` namespace.
-2.  **Delete**: `git push origin --delete feature-branch` -> Deletes `feature-branch` namespace.
+### 2. Backups in Cloud Storage
+The backups are successfully created and stored in the Google Cloud Storage bucket.
+![Backup Objects](screenshots/gcloud_list_bucket_objects.png)
