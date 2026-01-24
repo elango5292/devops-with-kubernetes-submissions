@@ -34,3 +34,4 @@
 | 3.5 | The Project Step 14 | [3.5_the_project_step14](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.5/3.5_the_project_step14) |
 | 3.6 | The Project Step 15 | [3.6_the_project_step15](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.6/3.6_the_project_step15) |
 | 3.7 | The Project Step 16 | [3.7_the_project_step16](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.7/3.7_the_project_step16) |
+| 3.8 | The Project Step 17 | [3.8_the_project_step17](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.8/3.8_the_project_step17) |

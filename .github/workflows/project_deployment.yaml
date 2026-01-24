@@ -25,6 +25,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
   GKE_ZONE: ${{ secrets.GKE_ZONE }}
+  PROJECT_PATH: 3.8_the_project_step17/manifests
 
 jobs:
   deploy:
@@ -116,7 +117,8 @@ jobs:
       - name: Deploy Application
         if: env.ACTION == 'apply'
         run: |-
-          cd 3.7_the_project_step16/manifests
+          cd ${{ env.PROJECT_PATH }}
+
           kustomize edit set namespace ${{ env.NAMESPACE }}
           kustomize build . | kubectl apply -f -
 
