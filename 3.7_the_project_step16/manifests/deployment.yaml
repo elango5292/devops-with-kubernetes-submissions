@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: project-step16
+  name: project-todo
   namespace: project
   labels:
-    name: project-step16
+    name: project-todo
     version: v1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: project-step16
+      name: project-todo
   template:
     metadata:
-      name: project-step16
+      name: project-todo
       labels:
-        name: project-step16
+        name: project-todo
         version: v1
     spec:
       containers:
-        - name: project-step16
+        - name: project-todo
           image: todo-app-image
           env:
             - name: PORT

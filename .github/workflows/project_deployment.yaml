@@ -123,7 +123,7 @@ jobs:
       - name: Verify Rollout
         if: env.ACTION == 'apply'
         run: |-
-          kubectl rollout status deployment project-step16 -n ${{ env.NAMESPACE }}
+          kubectl rollout status deployment project-todo -n ${{ env.NAMESPACE }}
           kubectl rollout status deployment todo-backend-dep -n ${{ env.NAMESPACE }}
 
       - name: Delete Environment

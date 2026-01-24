@@ -44,3 +44,9 @@ You can manually trigger the workflow to delete an environment:
 6.  Click **Run workflow**.
 
 This will delete the namespace corresponding to that branch.
+
+## 5. Deployment Naming
+
+**Note:** Starting from this step, the deployment and service name has been changed from `project-step<number>` to a generic **`project-todo`**.
+
+This change simplifies configuration and avoids the need to update the name with every exercise step.
