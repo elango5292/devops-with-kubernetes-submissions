@@ -12,7 +12,7 @@ spec:
           volumes:
           - name: google-cloud-key
             secret:
-              name: db-backup-cron-secret
+              secretName: db-backup-cron-secret
           containers:
           - name: db-backup-cron
             image: google/cloud-sdk:alpine
