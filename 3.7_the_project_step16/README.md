@@ -32,3 +32,15 @@ To create a new environment:
 1.  Create a new branch: `git checkout -b feature/dynamic-env`.
 2.  Push the branch: `git push origin feature/dynamic-env`.
 3.  The workflow will trigger and deploy to the `feature/dynamic-env` namespace.
+
+## 4. Cleanup (Manual Trigger)
+
+You can manually trigger the workflow to delete an environment:
+1.  Go to the **Actions** tab.
+2.  Select **Deploy Project Application**.
+3.  Click **Run workflow**.
+4.  Select the **Branch** you want to clean up.
+5.  In the **Action to perform** dropdown, select `delete`.
+6.  Click **Run workflow**.
+
+This will delete the namespace corresponding to that branch.
