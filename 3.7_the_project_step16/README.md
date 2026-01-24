@@ -50,3 +50,11 @@ This will delete the namespace corresponding to that branch.
 **Note:** Starting from this step, the deployment and service name has been changed from `project-step<number>` to a generic **`project-todo`**.
 
 This change simplifies configuration and avoids the need to update the name with every exercise step.
+
+## 6. Evidence
+
+**1. GKE Workloads (Multiple Namespaces)**
+![GKE Workloads](./screenshots/gcloud_workload_screen_multiple_ns.png)
+
+**2. GKE Ingress (Multiple Namespaces)**
+![GKE Ingress](./screenshots/gcloud_ingress_screen_multiple_ns.png)
