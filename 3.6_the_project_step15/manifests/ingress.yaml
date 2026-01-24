@@ -4,7 +4,7 @@ metadata:
   name: project-step15
   namespace: project
 spec:
-  ingressClassName: nginx
+
   rules:
     - http:
         paths:
