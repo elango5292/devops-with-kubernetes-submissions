@@ -35,7 +35,7 @@ spec:
                 gcloud auth activate-service-account --key-file=/var/secrets/google/GOOGLE_APPLICATION_CREDENTIALS
 
                 echo "Dumping DB..."
-                PGPASSWORD=$POSTGRES_PASSWORD pg_dump -h $DB_SERVICE_NAME.project -U $DB_USER $DB_NAME > /tmp/backup.sql
+                PGPASSWORD=$DB_PASSWORD pg_dump -h $DB_SERVICE_NAME.project -U $DB_USER $DB_NAME > /tmp/backup.sql
 
                 gsutil cp /tmp/backup.sql gs://$BUCKET_NAME/backup-$(date -u +%Y-%m-%dT%H-%M-%SZ).sql
 
