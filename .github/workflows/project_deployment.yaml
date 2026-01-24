@@ -2,9 +2,10 @@ name: Deploy Project Application
 
 # Required GitHub Secrets:
 # - GKE_PROJECT: Google Cloud Project ID
-# - GKE_SA_KEY: Google Cloud Service Account Key (JSON)
+# - GKE_SA_KEY: Google Cloud Service Account Key (JSON) for GKE
 # - GKE_CLUSTER: Google Kubernetes Engine Cluster Name
 # - GKE_ZONE: Google Kubernetes Engine Zone
+# - STORAGE_SA_KEY: Google Cloud Service Account Key (JSON) for storage
 
 on:
   push:
@@ -25,7 +26,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
   GKE_ZONE: ${{ secrets.GKE_ZONE }}
-  PROJECT_PATH: 3.8_the_project_step17/manifests
+  PROJECT_PATH: 3.10_the_project_step18/manifests
 
 jobs:
   deploy:
