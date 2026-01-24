@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres-db-external
+  namespace: project
+spec:
+  type: LoadBalancer
+  selector:
+    statefulset.kubernetes.io/pod-name: postgres-db-0
+  ports:
+    - name: db-port
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
