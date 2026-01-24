@@ -68,6 +68,8 @@ jobs:
 
       - name: 'Set up Cloud SDK'
         uses: google-github-actions/setup-gcloud@v2
+        with:
+          install_components: 'kubectl'
 
       - name: 'Get GKE credentials'
         uses: 'google-github-actions/get-gke-credentials@v2'
