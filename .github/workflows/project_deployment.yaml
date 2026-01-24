@@ -1,0 +1,86 @@
+name: Deploy Project Application
+
+# Required GitHub Secrets:
+# - GKE_PROJECT: Google Cloud Project ID
+# - GKE_SA_KEY: Google Cloud Service Account Key (JSON)
+# - GKE_CLUSTER: Google Kubernetes Engine Cluster Name
+# - GKE_ZONE: Google Kubernetes Engine Zone
+
+on:
+  push:
+  workflow_dispatch:
+
+env:
+  PROJECT_ID: ${{ secrets.GKE_PROJECT }}
+  GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
+  GKE_ZONE: ${{ secrets.GKE_ZONE }}
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate Environment Variables
+        env:
+          GKE_SA_KEY: ${{ secrets.GKE_SA_KEY }}
+        run: |
+          echo "Validating environment variables..."
+          MISSING_VARS=0
+
+          if [ -z "$PROJECT_ID" ]; then
+            echo "Error: PROJECT_ID (secret: GKE_PROJECT) is not set."
+            MISSING_VARS=1
+          fi
+
+          if [ -z "$GKE_CLUSTER" ]; then
+            echo "Error: GKE_CLUSTER (secret: GKE_CLUSTER) is not set."
+            MISSING_VARS=1
+          fi
+
+          if [ -z "$GKE_ZONE" ]; then
+            echo "Error: GKE_ZONE (secret: GKE_ZONE) is not set."
+            MISSING_VARS=1
+          fi
+
+          if [ -z "$GKE_SA_KEY" ]; then
+            echo "Error: GKE_SA_KEY (secret: GKE_SA_KEY) is not set."
+            MISSING_VARS=1
+          fi
+
+          if [ "$MISSING_VARS" -eq 1 ]; then
+            echo "Validation failed. Please verify that all required GitHub Secrets are set:"
+            echo "- GKE_PROJECT"
+            echo "- GKE_CLUSTER"
+            echo "- GKE_ZONE"
+            echo "- GKE_SA_KEY"
+            exit 1
+          else
+            echo "Validation successful."
+          fi
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GKE_SA_KEY }}'
+
+      - name: 'Set up Cloud SDK'
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: 'Get GKE credentials'
+        uses: 'google-github-actions/get-gke-credentials@v2'
+        with:
+          cluster_name: '${{ env.GKE_CLUSTER }}'
+          project_id: '${{ env.PROJECT_ID }}'
+          location: '${{ env.GKE_ZONE }}'
+
+      - name: Set up Kustomize
+        uses: imranismail/setup-kustomize@v2.1.0
+
+      - name: Deploy
+        run: |-
+          kustomize build 3.6_the_project_step15/manifests | kubectl apply -f -
+          kubectl rollout status deployment project-step15 -n project
+          kubectl rollout status deployment todo-backend-dep -n project

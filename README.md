@@ -32,3 +32,4 @@
 | 3.3 | To the Gateway | [3.3_to_the_gateway](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.3/3.3_to_the_gateway) |
 | 3.4 | Rewritten Routing | [3.4_rewritten_routing](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.4/3.4_rewritten_routing) |
 | 3.5 | The Project Step 14 | [3.5_the_project_step14](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.5/3.5_the_project_step14) |
+| 3.6 | The Project Step 15 | [3.6_the_project_step15](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.6/3.6_the_project_step15) |
