@@ -83,6 +83,7 @@ jobs:
 
       - name: Deploy
         run: |-
+          kubectl create namespace project || true
           kustomize build 3.6_the_project_step15/manifests | kubectl apply -f -
           kubectl rollout status deployment project-step15 -n project
           kubectl rollout status deployment todo-backend-dep -n project
