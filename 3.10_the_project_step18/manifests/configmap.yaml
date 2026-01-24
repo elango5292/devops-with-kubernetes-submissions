@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: project-config
+  namespace: project
+data:
+  PROJECT_PORT: "80"
+  TODO_PORT: "8001"
+  TODO_BACKEND_URL: "http://todo-backend-svc:2345"
+  DAILY_IMAGE_URL: "https://picsum.photos/1200"
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-db-config
+  namespace: project
+data:
+  DB_SERVICE_NAME: "postgres-db"
+  DB_SERVICE_PORT: "5432"
+  DB_USER: "admin"
+  DB_PASSWORD: "postgres"
+  DB_NAME: "mdb"
+
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-backup-config
+  namespace: project
+data:
+  BUCKET_NAME: "mooc-db-project-backup"

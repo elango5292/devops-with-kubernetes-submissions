@@ -114,6 +114,15 @@ jobs:
         if: env.ACTION == 'apply'
         run: kubectl create namespace ${{ env.NAMESPACE }} || true
 
+      - name: Create Snapshot Secret
+        if: env.ACTION == 'apply'
+        env:
+          STORAGE_SA_KEY: ${{ secrets.STORAGE_SA_KEY }}
+        run: |-
+          echo "$STORAGE_SA_KEY" > gcp-key.json
+          kubectl create secret generic db-backup-cron-secret --from-file=GOOGLE_APPLICATION_CREDENTIALS=gcp-key.json --dry-run=client -o yaml | kubectl apply -n ${{ env.NAMESPACE }} -f -
+          rm gcp-key.json
+
       - name: Deploy Application
         if: env.ACTION == 'apply'
         run: |-
