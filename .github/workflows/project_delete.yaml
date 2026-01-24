@@ -1,4 +1,5 @@
 name: Delete Project NS
+run-name: Delete ${{ github.event.ref }} environment
 
 on:
   delete:
@@ -16,8 +17,13 @@ jobs:
             echo "Error: Cannot delete production environment (main branch)."
             exit 1
           fi
+          echo "Deleting environment for branch: ${{ github.event.ref }}"
 
       - uses: actions/checkout@v4
+
+      - uses: google-github-actions/auth@v2
+        with:
+          credentials_json: '${{ secrets.GKE_SA_KEY }}'
 
       - name: 'Set up Cloud SDK'
         uses: google-github-actions/setup-gcloud@v2
@@ -30,10 +36,6 @@ jobs:
           cluster_name: '${{ secrets.GKE_CLUSTER }}'
           project_id: '${{ secrets.GKE_PROJECT }}'
           location: '${{ secrets.GKE_ZONE }}'
-
-      - uses: google-github-actions/auth@v2
-        with:
-          credentials_json: '${{ secrets.GKE_SA_KEY }}'
 
       - name: Delete Namespace
         run: |-
