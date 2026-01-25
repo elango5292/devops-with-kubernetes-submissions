@@ -3,14 +3,14 @@ kind: Kustomization
 
 resources:
   - configmap.yaml
-  # - db_deployment.yaml
-  # - db_service.yaml
+  - db_deployment.yaml
+  - db_service.yaml
   - deployment.yaml
   - todo_backend.yaml
   - service.yaml
   - cron.yaml
   - ingress.yaml
-  # - db_backup_cron.yaml
+  - db_backup_cron.yaml
 
 images:
   - name: todo-backend-image
