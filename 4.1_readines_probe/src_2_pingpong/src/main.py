@@ -18,6 +18,7 @@ def healthz():
             connection.execute(text("SELECT 1"))
         return JSONResponse(status_code=200, content={"status": "ready", "database": "connected"})
     except Exception as e:
+        print(f"Readiness check failed: {e}")
         return JSONResponse(status_code=503, content={"status": "not ready", "database": "disconnected", "error": str(e)})
 
 @app.on_event("startup")

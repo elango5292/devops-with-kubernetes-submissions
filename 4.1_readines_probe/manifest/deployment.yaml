@@ -33,7 +33,7 @@ spec:
             periodSeconds: 5
             httpGet:
               path: /healthz
-              port: 80
+              port: 8000
           env:
             - name: PINGPONG_SERVICE_NAME
               value: "src-2-pingpong"
@@ -73,13 +73,13 @@ spec:
     spec:
       containers:
         - name: src-2-pingpong
-          image: elango5292/src-2-pingpong:v6
+          image: elango5292/src-2-pingpong:v8
           readinessProbe:
             initialDelaySeconds: 30
             periodSeconds: 5
             httpGet:
               path: /healthz
-              port: 80
+              port: 8000
           envFrom:
             - configMapRef:
                 name: postgres-db-config

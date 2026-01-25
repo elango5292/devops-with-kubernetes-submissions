@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
-from sqlalchemy.orm import declarative_base, sessionmaker
+from sqlalchemy.orm import declarative_base, sessionmaker, scoped_session
 from datetime import datetime
 
 import os
@@ -28,7 +28,7 @@ class PingPong(Base):
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)
-session = Session()
+session = scoped_session(Session)
 
 def put_pingpong(key, value):
     existing = session.query(PingPong).filter(PingPong.key == key).first()
