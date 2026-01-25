@@ -22,3 +22,15 @@ Sensible resource requests and limits have been added to the application compone
 These values ensure that:
 - The backend and frontend have guaranteed resources to start up.
 - The database, which is more resource-intensive, has slightly higher allocations.
+
+## Verification Evidence
+The following screenshots demonstrate that the resource limits have been correctly applied in the cluster.
+
+### Frontend Container Details
+![Frontend Details](screenshots/gcloud_todo-app-details.png)
+
+### Backend Container Details
+![Backend Details](screenshots/gcloud_todo-backend-details.png)
+
+### Database Container Details
+![Database Details](screenshots/gcloud_todo-db-details.png)
