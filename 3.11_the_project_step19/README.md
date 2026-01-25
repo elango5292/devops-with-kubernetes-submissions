@@ -16,7 +16,7 @@ Sensible resource requests and limits have been added to the application compone
 - **Limits**: 100m CPU, 128Mi Memory
 
 ### 3. Postgres Database
-- **Requests**: 100m CPU, 150Mi Memory
+- **Requests**: 50m CPU, 128Mi Memory
 - **Limits**: 500m CPU, 512Mi Memory
 
 These values ensure that:
