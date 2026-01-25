@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mooc-prometheus-server
+  namespace: prometheus
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/component: server
+    app.kubernetes.io/name: prometheus
+  ports:
+    - name: prom-server
+      port: 9090
+      targetPort: 9090
