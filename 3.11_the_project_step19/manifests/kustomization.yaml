@@ -15,7 +15,7 @@ resources:
 images:
   - name: todo-backend-image
     newName: elango5292/todo-project-backend
-    newTag: v2
+    newTag: v3
   - name: todo-app-image
     newName: elango5292/todo-project-app
     newTag: v1
