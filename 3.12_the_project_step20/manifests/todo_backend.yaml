@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: todo-backend-dep
+  namespace: project
+  labels:
+    app: todo-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: todo-backend
+  template:
+    metadata:
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8001"
+      labels:
+        app: todo-backend
+    spec:
+      containers:
+        - name: todo-backend
+          image: todo-backend-image
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: TODO_PORT
+          envFrom:
+            - configMapRef:
+                name: postgres-db-config
+          ports:
+            - containerPort: 8001
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              memory: "128Mi"
+              cpu: "100m"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: todo-backend-svc
+  namespace: project
+spec:
+  type: ClusterIP
+  selector:
+    app: todo-backend
+  ports:
+    - port: 2345
+      targetPort: 8001
+      protocol: TCP

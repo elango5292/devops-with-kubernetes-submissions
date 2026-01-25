@@ -26,7 +26,7 @@ env:
   PROJECT_ID: ${{ secrets.GKE_PROJECT }}
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
   GKE_ZONE: ${{ secrets.GKE_ZONE }}
-  PROJECT_PATH: 3.11_the_project_step19/manifests
+  PROJECT_PATH: 3.12_the_project_step20/manifests
 
 jobs:
   deploy:

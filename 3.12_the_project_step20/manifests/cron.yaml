@@ -1,0 +1,24 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: todo-cron
+  namespace: project
+spec:
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: todo-cron
+            image: todo-cron-image
+            env:
+              - name: TODO_BACKEND_URL
+                valueFrom:
+                  configMapKeyRef:
+                    name: project-config
+                    key: TODO_BACKEND_URL
+            command:
+            - python
+            - /app/main.py
+          restartPolicy: OnFailure
