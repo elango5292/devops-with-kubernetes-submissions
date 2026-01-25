@@ -40,3 +40,4 @@
 | 3.11 | The Project Step 19 | [3.11_the_project_step19](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.11/3.11_the_project_step19) |
 | 3.12 | The Project Step 20 | [3.12_the_project_step20](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/3.12/3.12_the_project_step20) |
 | 4.1 | Readiness Probe | [4.1_readines_probe](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/4.1/4.1_readines_probe) |
+| 4.2 | The Project Step 21 | [4.2_the_project_step21](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/4.2/4.2_the_project_step21) |

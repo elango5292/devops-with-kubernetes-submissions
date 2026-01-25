@@ -4,43 +4,50 @@ This directory contains the solution for Exercise 4.2, adding health checks to t
 
 ## Probe Logic
 
-We implemented **Readiness** and **Liveness** probes for both the Backend and Frontend services.
+I have implemented **Readiness** and **Liveness** probes for both the Backend and Frontend services.
 
 ### Backend (`todo-backend`)
 
-*   **Liveness Probe** (`/healthz`):
-    *   Checks system health including **Database Connectivity**.
-    *   If the database is unreachable, the pod will be restarted.
-*   **Readiness Probe** (`/healthz`):
-    *   Checks **Database Connectivity**.
-    *   Ensures traffic is only sent to the backend when it can access the database.
+*   **Endpoint**: `/healthz`
+*   **Logic**: Checks connectivity to the PostgreSQL database.
+*   **Behavior**:
+    *   **Readiness**: If DB is unreachable, traffic is stopped.
+    *   **Liveness**: If DB is unreachable, the pod is restarted (as requested).
 
 ### Frontend (`todo-app`)
 
-*   **Liveness Probe** (`/healthz`):
-    *   Checks system health including **Backend Connectivity**.
-    *   If the backend is unreachable, the pod will be restarted.
-*   **Readiness Probe** (`/healthz`):
-    *   Checks **Backend Connectivity**.
-    *   Ensures traffic is only sent when the backend is reachable.
+*   **Endpoint**: `/healthz`
+*   **Logic**: Checks connectivity to the Backend service.
+*   **Behavior**:
+    *   **Readiness**: If Backend is unreachable, traffic is stopped.
+    *   **Liveness**: If Backend is unreachable, the pod is restarted.
 
-## Dependency Chain
+## Evidence of Testing
 
-The probes create a dependency chain that ensures the entire system starts up in the correct order:
+I have verified the implementation by simulating a database failure and recovery.
 
-```
-PostgreSQL DB -> Backend (Ready when DB is up) -> Frontend (Ready when Backend is reachable)
-```
+### 1. Probe Configuration
+The following screenshots confirm that Readiness and Liveness probes are correctly configured for both workloads.
 
-## Testing
+**Todo App (Frontend):**
+![Frontend Probes](screenshots/gcloud_container_details_rediness_liveness_probe_todo_app.png)
 
-To verify the probes work, you can simulate a failure:
+**Todo Backend:**
+![Backend Probes](screenshots/gcloud_container_details_rediness_liveness_probe_todo_backend.png)
 
-1.  **Stop the Database**: Delete the PostgreSQL StatefulSet.
-    *   Result: Backend Readiness Probe fails (`503`). Backend pod goes "Not Ready".
-    *   Result: Frontend Readiness Probe fails (`503`, can't reach Backend). Frontend pod goes "Not Ready".
-    *   Result: Liveness probes pass (pods stay "Running", no crash loop).
+### 2. Failure Scenario (Database Down)
+When the database is not deployed, the probes fail.
 
-2.  **Start the Database**: Re-apply PostgreSQL manifest.
-    *   Result: Backend connects, probe passes (`200`). Backend becomes "Ready".
-    *   Result: Frontend connects to Backend, probe passes (`200`). Frontend becomes "Ready".
+**Workload Status (Error):**
+The workloads report errors due to failed health checks.
+![Workload Error](screenshots/gcloud_workload_screen_error_minimum_availability_no_db_deployed.png)
+
+**Probe Failure Event:**
+`kubectl describe` shows the specific readiness probe failure event.
+![Probe Failure Event](screenshots/gshell_describe_rediness_failed_event_show.png)
+
+### 3. Success Scenario (Database Up)
+After deploying the database, the health checks pass, and all workloads become healthy.
+
+**Workload Status (Success):**
+![Workload Success](screenshots/gcloud_workload_screen_success_all_deploy_after_db_deployed.png)
