@@ -23,6 +23,4 @@ helm install mooc-nats nats/nats -n nats --create-namespace
 
 ## Evidence of Testing
 
-[Watch the video demonstration of the working application](https://youtu.be/z6yUjghZXEo)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/z6yUjghZXEo?si=rLYEEysI8mlUbM2i" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+[external_app_broadcaster.webm](https://github.com/user-attachments/assets/311285d7-a908-4f67-ac45-19a26ff694f6)
