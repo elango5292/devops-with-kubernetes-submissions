@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nats-external
+  namespace: nats
+spec:
+  type: LoadBalancer
+  selector:
+    app.kubernetes.io/name: nats
+    app.kubernetes.io/component: nats
+    app.kubernetes.io/instance: mooc-nats
+  ports:
+    - name: ui
+      port: 8222
+      targetPort: 8222
+      protocol: TCP
+    - name: connect
+      port: 4222
+      targetPort: 4222
+      protocol: TCP

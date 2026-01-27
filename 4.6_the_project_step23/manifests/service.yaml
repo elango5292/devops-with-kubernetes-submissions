@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: project-todo
+  namespace: project
+spec:
+  type: ClusterIP
+  selector:
+    name: project-todo
+  ports:
+    - name: http
+      port: 1234
+      targetPort: 80

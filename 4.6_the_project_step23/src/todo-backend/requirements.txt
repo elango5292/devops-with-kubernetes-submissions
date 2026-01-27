@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+requests
+sqlalchemy
+psycopg[binary]
+prometheus-fastapi-instrumentator
+nats-py

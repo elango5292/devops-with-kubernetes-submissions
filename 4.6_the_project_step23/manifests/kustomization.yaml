@@ -1,0 +1,28 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - configmap.yaml
+  - db_deployment.yaml
+  - db_service.yaml
+  - deployment.yaml
+  - todo_backend.yaml
+  - service.yaml
+  - cron.yaml
+  - ingress.yaml
+  - db_backup_cron.yaml
+  - broadcaster_deployment.yaml
+
+images:
+  - name: todo-backend-image
+    newName: elango5292/todo-project-backend
+    newTag: v8
+  - name: todo-app-image
+    newName: elango5292/todo-project-app
+    newTag: v3
+  - name: todo-cron-image
+    newName: elango5292/todo-project-cron
+    newTag: v1
+  - name: todo-broadcaster-image
+    newName: elango5292/todo-project-broadcaster
+    newTag: v2
