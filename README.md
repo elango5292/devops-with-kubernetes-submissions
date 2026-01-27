@@ -42,3 +42,4 @@
 | 4.1 | Readiness Probe | [4.1_readines_probe](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/4.1/4.1_readines_probe) |
 | 4.2 | The Project Step 21 | [4.2_the_project_step21](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/4.2/4.2_the_project_step21) |
 | 4.3 | Prometheus | [4.3_prometheus](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/4.3/4.3_prometheus) |
+| 4.4 | Your Canary | [4.4_your_canary](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/4.4/4.4_your_canary) |

@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: persisting-data-ingress
+  namespace: exercises
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - path: /pingpong(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: src-2-pingpong
+                port:
+                  number: 80
+          - path: /()(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: src-1-log-output
+                port:
+                  number: 80
+

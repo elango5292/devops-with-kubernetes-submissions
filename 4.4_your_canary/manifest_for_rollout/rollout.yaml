@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: src-2-pingpong-rollout
+  namespace: exercises
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: src-2-pingpong
+  template:
+    metadata:
+      labels:
+        app: src-2-pingpong
+        version: 1.0.0
+    spec:
+      containers:
+        - name: src-2-pingpong
+          image: elango5292/src-2-pingpong:v8
+          readinessProbe:
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 8000
+          envFrom:
+            - configMapRef:
+                name: postgres-db-config
+  strategy:
+    canary:
+      analysis:
+        templates:
+        - templateName: cpu-usage-analysis
+        startingStep: 1
+      steps:
+      - setWeight: 50
+      - pause: {}

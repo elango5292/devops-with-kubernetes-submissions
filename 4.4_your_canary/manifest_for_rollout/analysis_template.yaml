@@ -1,0 +1,16 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: cpu-usage-analysis
+  namespace: exercises
+spec:
+  metrics:
+  - name: cpu-usage
+    interval: 10s
+    # Success if CPU usage sum for the namespace is below 0.2 (200m)
+    successCondition: len(result) > 0 && result[0] < 0.001
+    failureLimit: 1
+    provider:
+      prometheus:
+        address: http://mooc-prometheus-server.prometheus.svc.cluster.local
+        query: sum(rate(container_cpu_usage_seconds_total{namespace="exercises"}[5m]))
