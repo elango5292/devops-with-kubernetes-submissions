@@ -1,0 +1,43 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: db-backup-cron
+  namespace: project
+spec:
+  schedule: "0 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          volumes:
+          - name: google-cloud-key
+            secret:
+              secretName: db-backup-cron-secret
+          containers:
+          - name: db-backup-cron
+            image: google/cloud-sdk:alpine
+            envFrom:
+            - configMapRef:
+                name: postgres-db-config
+            - configMapRef:
+                name: db-backup-config
+            volumeMounts:
+            - name: google-cloud-key
+              mountPath: /var/secrets/google
+              readOnly: true
+            command: ["/bin/sh", "-c"]
+            args:
+              - |
+                set -e
+
+                apk add --no-cache postgresql-client
+
+                gcloud auth activate-service-account --key-file=/var/secrets/google/GOOGLE_APPLICATION_CREDENTIALS
+
+                echo "Dumping DB..."
+                PGPASSWORD=$DB_PASSWORD pg_dump -h $DB_SERVICE_NAME.project -U $DB_USER $DB_NAME > /tmp/backup.sql
+
+                gsutil cp /tmp/backup.sql gs://$BUCKET_NAME/backup-$(date -u +%Y-%m-%dT%H-%M-%SZ).sql
+
+                echo "Done!"
+          restartPolicy: OnFailure

@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-todo
+  namespace: project
+  labels:
+    name: project-todo
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: project-todo
+  template:
+    metadata:
+      name: project-todo
+      labels:
+        name: project-todo
+        version: v1
+    spec:
+      containers:
+        - name: project-todo
+          image: todo-app-image
+          env:
+            - name: PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: PROJECT_PORT
+            - name: TODO_BACKEND_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: TODO_BACKEND_URL
+            - name: DAILY_IMAGE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: project-config
+                  key: DAILY_IMAGE_URL
+          resources:
+            requests:
+              cpu: 150m
+              memory: 150Mi
+          readinessProbe:
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 80
+          livenessProbe:
+            initialDelaySeconds: 15
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 80
