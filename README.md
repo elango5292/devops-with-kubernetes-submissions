@@ -46,3 +46,4 @@
 | 4.5 | The Project Step 22 | [4.5_the_project_step22](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/4.5/4.5_the_project_step22) |
 | 4.6 | The Project Step 23 | [4.6_the_project_step23](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/4.6/4.6_the_project_step23) |
 | 5.1 | DIY CRD & Controller | [5.1_diy_crd_controller](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/5.1/5.1_diy_crd_controller) |
+| 5.2 | Getting Started with Istio | [5.2_getting_started_with_istio_service_mesh](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/5.2/5.2_getting_started_with_istio_service_mesh) |
