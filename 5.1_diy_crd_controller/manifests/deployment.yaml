@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dummy-site-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dummy-site-controller
+  template:
+    metadata:
+      labels:
+        app: dummy-site-controller
+    spec:
+      serviceAccountName: dummy-site-service-account
+      containers:
+      - name: dummy-site-controller
+        image: elango5292/dummy-site-controller:v1
+        ports:
+        - containerPort: 80

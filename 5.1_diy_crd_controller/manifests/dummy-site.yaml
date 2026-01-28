@@ -1,0 +1,17 @@
+apiVersion: dwk.io/v1
+kind: DummySite
+metadata:
+  name: example-dummy-site
+spec:
+  website_url: https://example.com
+  dummy_port: 8080
+  replicas: 1
+---
+apiVersion: dwk.io/v1
+kind: DummySite
+metadata:
+  name: wikipedia-dummy-site
+spec:
+  website_url: https://en.wikipedia.org/wiki/Kubernetes
+  dummy_port: 8081
+  replicas: 1

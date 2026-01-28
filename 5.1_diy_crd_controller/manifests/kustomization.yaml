@@ -1,0 +1,12 @@
+resources:
+  - service_account.yaml
+  - cluster_role.yaml
+  - cluster_role_binding.yaml
+  - deployment.yaml
+  - crd.yaml
+  - dummy-site.yaml
+
+images:
+  - name: dummy-site-controller
+    newName: elango5292/dummy-site-controller
+    newTag: v1
