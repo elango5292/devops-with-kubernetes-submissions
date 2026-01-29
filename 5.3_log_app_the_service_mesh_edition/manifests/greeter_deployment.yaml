@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: src-3-greeter-v1
+  namespace: exercises
+  labels:
+    app: src-3-greeter
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: src-3-greeter
+      version: v1
+  template:
+    metadata:
+      name: src-3-greeter-v1
+      labels:
+        app: src-3-greeter
+        version: v1
+    spec:
+      containers:
+        - name: src-3-greeter
+          image: elango5292/src-3-greeter:v1
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 8000
+          env:
+            - name: GREETER_VERSION
+              value: "v1"
+            - name: GREETING
+              value: "Hello"
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: src-3-greeter-v2
+  namespace: exercises
+  labels:
+    app: src-3-greeter
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: src-3-greeter
+      version: v2
+  template:
+    metadata:
+      name: src-3-greeter-v2
+      labels:
+        app: src-3-greeter
+        version: v2
+    spec:
+      containers:
+        - name: src-3-greeter
+          image: elango5292/src-3-greeter:v2
+          readinessProbe:
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            httpGet:
+              path: /healthz
+              port: 8000
+          env:
+            - name: GREETER_VERSION
+              value: "v2"
+            - name: GREETING
+              value: "Hola"

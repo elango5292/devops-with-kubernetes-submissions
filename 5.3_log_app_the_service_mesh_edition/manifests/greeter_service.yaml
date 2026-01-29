@@ -1,0 +1,58 @@
+# Main greeter service - used by log-output to call greeter
+apiVersion: v1
+kind: Service
+metadata:
+  name: src-3-greeter
+  namespace: exercises
+  labels:
+    app: src-3-greeter
+spec:
+  type: ClusterIP
+  selector:
+    app: src-3-greeter
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000
+
+---
+
+# Greeter v1 service - for traffic splitting
+apiVersion: v1
+kind: Service
+metadata:
+  name: src-3-greeter-v1
+  namespace: exercises
+  labels:
+    app: src-3-greeter
+    version: v1
+spec:
+  type: ClusterIP
+  selector:
+    app: src-3-greeter
+    version: v1
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000
+
+---
+
+# Greeter v2 service - for traffic splitting
+apiVersion: v1
+kind: Service
+metadata:
+  name: src-3-greeter-v2
+  namespace: exercises
+  labels:
+    app: src-3-greeter
+    version: v2
+spec:
+  type: ClusterIP
+  selector:
+    app: src-3-greeter
+    version: v2
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000
