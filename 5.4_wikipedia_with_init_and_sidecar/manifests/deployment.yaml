@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wikipedia-server
+  labels:
+    app: wikipedia-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wikipedia-server
+  template:
+    metadata:
+      labels:
+        app: wikipedia-server
+    spec:
+      volumes:
+        - name: shared-content
+          emptyDir: {}
+      initContainers:
+        - name: init-wiki
+          image: alpine
+          command: ["sh", "-c", "apk add --no-cache curl && curl -L -o /usr/share/nginx/html/index.html https://en.wikipedia.org/wiki/Kubernetes"]
+          volumeMounts:
+            - name: shared-content
+              mountPath: /usr/share/nginx/html
+      containers:
+        - name: nginx
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: shared-content
+              mountPath: /usr/share/nginx/html
+        - name: sidecar-wiki
+          image: alpine
+          command: ["sh", "-c", "apk add --no-cache curl && while true; do sleep $(awk 'BEGIN{srand(); print int(rand()*(900-300+1))+300}'); curl -L -o /usr/share/nginx/html/index.html https://en.wikipedia.org/wiki/Special:Random; done"]
+          volumeMounts:
+            - name: shared-content
+              mountPath: /usr/share/nginx/html
