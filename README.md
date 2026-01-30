@@ -50,3 +50,5 @@
 | 5.3 | Log app, the Service Mesh Edition | [5.3_log_app_the_service_mesh_edition](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/5.3/5.3_log_app_the_service_mesh_edition) |
 | 5.4 | Wikipedia with Init and Sidecar | [5.4_wikipedia_with_init_and_sidecar](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/5.4/5.4_wikipedia_with_init_and_sidecar) |
 | 5.6 | Trying Serverless | [5.6_trying_serverless](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/5.6/5.6_trying_serverless) |
+| 5.7 | Deploy to Serverless | [5.7_deploy_to_serverless](https://github.com/elango5292/devops-with-kubernetes-submissions/tree/5.7/5.7_deploy_to_serverless) |
+

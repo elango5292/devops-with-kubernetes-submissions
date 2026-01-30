@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-db-config
+  namespace: exercises
+data:
+  DB_SERVICE_NAME: "postgres-db"
+  DB_SERVICE_PORT: "5432"
+  DB_USER: "admin"
+  DB_PASSWORD: "postgres"
+  DB_NAME: "mdb"
+
+---
